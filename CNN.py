@@ -103,39 +103,6 @@ def test():
 
 test()
 
-## Getting result
-
-sample = next(iter(loaders['test']))
-imgs, lbls = sample
-
-actual_number = lbls[:10].numpy()
-actual_number
-
-test_output, last_layer = cnn(imgs[:10])
-pred_y = torch.max(test_output, 1)[1].data.numpy().squeeze()
-print(f'Prediction number: {pred_y}')
-print(f'Actual number: {actual_number}')
-
-## Printing digits
-import matplotlib.pyplot as plt
-
-plt.imshow(train_data.data[0], cmap='gray')
-plt.title('%i' % train_data.targets[0])
-plt.show()
-
-figure = plt.figure(figsize=(10, 8))
-cols, rows = 5, 5
-for i in range(1, cols * rows + 1):
-    sample_idx = torch.randint(len(train_data), size=(1,)).item()
-    img, label = train_data[sample_idx]
-    figure.add_subplot(rows, cols, i)
-    plt.title(label)
-    plt.axis("off")
-    plt.imshow(img.squeeze(), cmap="gray")
-plt.show()
-
-
-
 ## Print images
 
 def imshow(img, figsize=(6, 6)):
