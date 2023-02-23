@@ -26,7 +26,7 @@ loaders = {
 import torch.nn as nn
 import torch.nn.functional as F
 
-hidden_size = 25
+hidden_size = 36
 
 class DENSE(nn.Module):
     def __init__(self):
